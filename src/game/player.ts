@@ -8,7 +8,7 @@ export class Player extends GameObjects.Sprite {
         super(scene, 40, 60, "star");
         this.scale = 0.6;
 
-        this.name = "player uwu";
+        this.name = "player";
         scene.add.existing(this);
 
         this.active = true;
