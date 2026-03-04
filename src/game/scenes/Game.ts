@@ -1,5 +1,6 @@
 import { EventBus } from "../EventBus";
 import { Scene } from "phaser";
+import { Player } from "../player";
 
 export class Game extends Scene {
     camera!: Phaser.Cameras.Scene2D.Camera;
@@ -12,13 +13,9 @@ export class Game extends Scene {
 
     create() {
         this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
-
-        this.background = this.add.image(512, 384, "background");
-        this.background.setAlpha(0.5);
 
         this.gameText = this.add
-            .text(512, 384, "glorp!", {
+            .text(512, 384, "game - glorp!", {
                 fontFamily: "Arial Black",
                 fontSize: 48,
                 color: "#ffffff",
@@ -28,6 +25,8 @@ export class Game extends Scene {
             })
             .setOrigin(0.5)
             .setDepth(100);
+
+        const player = new Player(this);
 
         EventBus.emit("current-scene-ready", this);
     }
