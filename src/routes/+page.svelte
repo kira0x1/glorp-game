@@ -6,15 +6,14 @@
     //  References to the PhaserGame component (game and scene are exposed)
     let phaserRef: TPhaserRef = { game: null, scene: null };
     const spritePosition = { x: 0, y: 0 };
-    let lastTime = 0;
     let elapsed = 0;
 
     const changeScene = () => {
         const scene = phaserRef.scene;
         const mainMenu = scene as MainMenu;
 
-        if (scene.scene.key === "Game") {
-            scene.events.on("update", (time, delta) => {
+        if (scene && scene.scene.key === "Game") {
+            scene.events.on("update", (time: number, delta: number) => {
                 elapsed += delta;
 
                 if (elapsed > 40) {
